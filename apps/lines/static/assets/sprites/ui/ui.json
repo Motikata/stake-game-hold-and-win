@@ -1,0 +1,303 @@
+{
+  "frames": {
+    "spin_button_circle.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 367,
+        "h": 367
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 367,
+        "h": 367
+      },
+      "sourceSize": {
+        "w": 367,
+        "h": 367
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "footer_dimmer_strip.png": {
+      "frame": {
+        "x": 0,
+        "y": 367,
+        "w": 200,
+        "h": 359
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 200,
+        "h": 359
+      },
+      "sourceSize": {
+        "w": 200,
+        "h": 388
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spin_button_icon.png": {
+      "frame": {
+        "x": 0,
+        "y": 726,
+        "w": 232,
+        "h": 215
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 67,
+        "y": 76,
+        "w": 232,
+        "h": 215
+      },
+      "sourceSize": {
+        "w": 367,
+        "h": 367
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "buybonus_button_press_state.png": {
+      "frame": {
+        "x": 200,
+        "y": 367,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 210,
+        "h": 210
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fast_play_icon.png": {
+      "frame": {
+        "x": 200,
+        "y": 576,
+        "w": 73,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 14,
+        "w": 73,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 138,
+        "h": 138
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bet_minus_icon.png": {
+      "frame": {
+        "x": 200,
+        "y": 694,
+        "w": 59,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 61,
+        "y": 76,
+        "w": 59,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 181,
+        "h": 181
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "buybonus_button.png": {
+      "frame": {
+        "x": 367,
+        "y": 0,
+        "w": 186,
+        "h": 186
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 12,
+        "w": 186,
+        "h": 186
+      },
+      "sourceSize": {
+        "w": 210,
+        "h": 210
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bet_button_square.png": {
+      "frame": {
+        "x": 367,
+        "y": 186,
+        "w": 181,
+        "h": 181
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 181,
+        "h": 181
+      },
+      "sourceSize": {
+        "w": 181,
+        "h": 181
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bet_plus_icon.png": {
+      "frame": {
+        "x": 0,
+        "y": 958,
+        "w": 106,
+        "h": 105
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 37,
+        "y": 37,
+        "w": 106,
+        "h": 105
+      },
+      "sourceSize": {
+        "w": 181,
+        "h": 181
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "auto_play_icon.png": {
+      "frame": {
+        "x": 0,
+        "y": 1064,
+        "w": 96,
+        "h": 82
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 29,
+        "w": 96,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 138,
+        "h": 138
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "volume_icon.png": {
+      "frame": {
+        "x": 0,
+        "y": 1160,
+        "w": 90,
+        "h": 79
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 14,
+        "w": 90,
+        "h": 79
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 104
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "menu_icon.png": {
+      "frame": {
+        "x": 0,
+        "y": 1250,
+        "w": 85,
+        "h": 64
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 21,
+        "w": 85,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 104
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "ui.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 553,
+      "h": 1335
+    },
+    "scale": 1
+  }
+}

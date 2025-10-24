@@ -1,0 +1,207 @@
+{
+  "frames": {
+    "3x3_reels_frame.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 1420,
+        "h": 1019
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 1420,
+        "h": 1019
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1021
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "reel_divider.png": {
+      "frame": {
+        "x": 0,
+        "y": 1019,
+        "w": 6,
+        "h": 982
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 982
+      },
+      "sourceSize": {
+        "w": 6,
+        "h": 982
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "game_logo.png": {
+      "frame": {
+        "x": 1420,
+        "y": 0,
+        "w": 470,
+        "h": 89
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 9,
+        "w": 470,
+        "h": 89
+      },
+      "sourceSize": {
+        "w": 492,
+        "h": 98
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "27_ways_tag.png": {
+      "frame": {
+        "x": 1890,
+        "y": 0,
+        "w": 71,
+        "h": 82
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 71,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 72,
+        "h": 85
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "base_reelstrip.png": {
+      "frame": {
+        "x": 1420,
+        "y": 89,
+        "w": 462,
+        "h": 328
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 328
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h&w_bonus_reelstrip.png": {
+      "frame": {
+        "x": 1420,
+        "y": 417,
+        "w": 462,
+        "h": 328
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 328
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "pesudo_collection_above_reels.png": {
+      "frame": {
+        "x": 1420,
+        "y": 745,
+        "w": 692,
+        "h": 378
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 24,
+        "w": 692,
+        "h": 378
+      },
+      "sourceSize": {
+        "w": 711,
+        "h": 402
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "lightning_cash_cash.png": {
+      "frame": {
+        "x": 1798,
+        "y": 745,
+        "w": 356,
+        "h": 173
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 356,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 356,
+        "h": 173
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "reelsAndFrame.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1972,
+      "h": 2001
+    },
+    "scale": 1
+  }
+}

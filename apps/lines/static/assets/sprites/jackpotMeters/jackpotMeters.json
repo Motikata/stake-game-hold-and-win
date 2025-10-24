@@ -1,0 +1,159 @@
+{
+  "frames": {
+    "grand_mega_jpt_meter.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 411,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 6,
+        "w": 411,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 420,
+        "h": 146
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "minor_mini_jpt_meter.png": {
+      "frame": {
+        "x": 411,
+        "y": 0,
+        "w": 354,
+        "h": 107
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 354,
+        "h": 107
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 115
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "grand_jpt_text.png": {
+      "frame": {
+        "x": 765,
+        "y": 0,
+        "w": 244,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 244,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 250,
+        "h": 76
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "mega_jpt_text.png": {
+      "frame": {
+        "x": 1009,
+        "y": 0,
+        "w": 189,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 31,
+        "y": 0,
+        "w": 189,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 250,
+        "h": 76
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "minor_jpt_text.png": {
+      "frame": {
+        "x": 1198,
+        "y": 0,
+        "w": 170,
+        "h": 54
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 2,
+        "w": 170,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 187,
+        "h": 65
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "mini_jpt_text.png": {
+      "frame": {
+        "x": 1368,
+        "y": 0,
+        "w": 115,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 37,
+        "y": 3,
+        "w": 115,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 187,
+        "h": 65
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "jackpotMeters.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1483,
+      "h": 135
+    },
+    "scale": 1
+  }
+}

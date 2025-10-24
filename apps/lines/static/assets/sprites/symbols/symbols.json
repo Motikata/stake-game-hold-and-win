@@ -1,0 +1,351 @@
+{
+  "frames": {
+    "mega_prize_symbol.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 437
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 7,
+        "w": 462,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "mini_prize_symbol.png": {
+      "frame": {
+        "x": 462,
+        "y": 0,
+        "w": 462,
+        "h": 436
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 462,
+        "h": 436
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "minor_prize_symbol.png": {
+      "frame": {
+        "x": 924,
+        "y": 0,
+        "w": 462,
+        "h": 436
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 462,
+        "h": 436
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "accumulator_symbol.png": {
+      "frame": {
+        "x": 1386,
+        "y": 0,
+        "w": 462,
+        "h": 435
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 462,
+        "h": 435
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "grand_prize_symbol.png": {
+      "frame": {
+        "x": 1386,
+        "y": 435,
+        "w": 462,
+        "h": 435
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 462,
+        "h": 435
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_cash_prize_symbol.png": {
+      "frame": {
+        "x": 462,
+        "y": 436,
+        "w": 462,
+        "h": 428
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 11,
+        "w": 462,
+        "h": 428
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 448
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ankh_symbol.png": {
+      "frame": {
+        "x": 0,
+        "y": 437,
+        "w": 462,
+        "h": 328
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 328
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "beetle_symbol.png": {
+      "frame": {
+        "x": 0,
+        "y": 765,
+        "w": 462,
+        "h": 328
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 328
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "scroll_symbol.png": {
+      "frame": {
+        "x": 924,
+        "y": 436,
+        "w": 462,
+        "h": 328
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 462,
+        "h": 328
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Eagle_symbol.png": {
+      "frame": {
+        "x": 924,
+        "y": 764,
+        "w": 462,
+        "h": 321
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 462,
+        "h": 321
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "queen_symbol.png": {
+      "frame": {
+        "x": 462,
+        "y": 864,
+        "w": 331,
+        "h": 267
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 66,
+        "y": 31,
+        "w": 331,
+        "h": 267
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ace_symbol.png": {
+      "frame": {
+        "x": 0,
+        "y": 1093,
+        "w": 288,
+        "h": 255
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 87,
+        "y": 37,
+        "w": 288,
+        "h": 255
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "king_symbol.png": {
+      "frame": {
+        "x": 1386,
+        "y": 870,
+        "w": 283,
+        "h": 269
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 95,
+        "y": 39,
+        "w": 283,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "jack_reelstrip.png": {
+      "frame": {
+        "x": 1669,
+        "y": 1085,
+        "w": 231,
+        "h": 258
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 116,
+        "y": 35,
+        "w": 231,
+        "h": 258
+      },
+      "sourceSize": {
+        "w": 462,
+        "h": 328
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "symbols.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1927,
+      "h": 1348
+    },
+    "scale": 1
+  }
+}
