@@ -10,6 +10,7 @@
 	import {GameVersion, Modals} from 'components-ui-html';
 
 	import {getContext} from '../game/context';
+	import { EnablePixiExtension } from 'components-pixi';
 	import EnableSound from './EnableSound.svelte';
 	import EnableGameActor from './EnableGameActor.svelte';
 	import ResumeBet from './ResumeBet.svelte';
@@ -40,6 +41,7 @@
 </script>
 
 <App>
+	<EnablePixiExtension/>
 	<EnableSound />
 	<EnableHotkey />
 	<EnableGameActor />

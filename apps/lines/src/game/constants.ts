@@ -1,12 +1,14 @@
 import _ from 'lodash';
-
 import type { RawSymbol, SymbolState } from './types';
 
 export const SYMBOL_SIZE = 130;
 export const REEL_GAP = Math.round(SYMBOL_SIZE * 3); // пробвай 0.10–0.20 от SYMBOL_SIZE
 
 export const REEL_PADDING = 0.53;
+//export const REEL_GAP = Math.round(SYMBOL_SIZE * 0.18); // ~23px при 130
 
+// Ново: вертикален GAP между видимите редове
+export const ROW_GAP  = Math.round(SYMBOL_SIZE * 0.22); // ~29px при 130
 // initial board (padded top and bottom) — 3 reels × (3 видими + 2 padding)
 export const INITIAL_BOARD: RawSymbol[][] = [
 	[
@@ -118,26 +120,25 @@ const explosion = {
 // NEW SPRITES (от symbols.png / symbols.json) — без Spine, само PNG от спрайт атласа
 // Highs (съгласно арта): H1=Ankh, H2=Beetle, H3=Eagle, H4=Scroll, H5 (резерв) = Ankh
 // 462x328 target => aspect = 462 / 328 ≈ 1.40854
-const RATIO_W = 2; // ≈ 1.4085365853658536
-const RATIO_H = 328 / 462; // ≈ 0.7099567099567099
-
+const RATIO_W = 1.8058682122458438;
+const RATIO_H = 1.4729757033000357;
 // Highs
-const h1Static = { type: 'sprite', assetKey: 'Ankh_symbol.png',   sizeRatios: { width: RATIO_W, height: 1 } };
-const h2Static = { type: 'sprite', assetKey: 'beetle_symbol.png', sizeRatios: { width: RATIO_W, height: 1 } };
-const h3Static = { type: 'sprite', assetKey: 'Eagle_symbol.png',  sizeRatios: { width: RATIO_W, height: 1 } };
-const h4Static = { type: 'sprite', assetKey: 'scroll_symbol.png', sizeRatios: { width: RATIO_W, height: 1 } };
-const h5Static = { type: 'sprite', assetKey: 'Ankh_symbol.png',   sizeRatios: { width: RATIO_W, height: 1 } }; // резерв
+const h1Static = { type: 'sprite', assetKey: 'Ankh_symbol.png',   sizeRatios: { width: RATIO_W, height: RATIO_H} };
+const h2Static = { type: 'sprite', assetKey: 'beetle_symbol.png', sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const h3Static = { type: 'sprite', assetKey: 'Eagle_symbol.png',  sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const h4Static = { type: 'sprite', assetKey: 'scroll_symbol.png', sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const h5Static = { type: 'sprite', assetKey: 'Ankh_symbol.png',   sizeRatios: { width: RATIO_W, height: RATIO_H } }; // резерв
 
 // Lows (A/K/Q/J)
-const l1Static = { type: 'sprite', assetKey: 'ace_symbol.png',    sizeRatios: { width: RATIO_W, height: 1 } }; // L1 = A
-const l2Static = { type: 'sprite', assetKey: 'king_symbol.png',   sizeRatios: { width: RATIO_W, height: 1 } }; // L2 = K
-const l3Static = { type: 'sprite', assetKey: 'queen_symbol.png',  sizeRatios: { width: RATIO_W, height: 1 } }; // L3 = Q
-const l4Static = { type: 'sprite', assetKey: 'jack_reelstrip.png',sizeRatios: { width: RATIO_W, height: 1 } }; // L4 = J
-const l5Static = { type: 'sprite', assetKey: 'jack_reelstrip.png',sizeRatios: { width: RATIO_W, height: 1 } }; // L5 временно = J
+const l1Static = { type: 'sprite', assetKey: 'ace_symbol.png',    sizeRatios: { width: RATIO_W, height: RATIO_H } }; // L1 = A
+const l2Static = { type: 'sprite', assetKey: 'king_symbol.png',   sizeRatios: { width: RATIO_W, height: RATIO_H } }; // L2 = K
+const l3Static = { type: 'sprite', assetKey: 'queen_symbol.png',  sizeRatios: { width: RATIO_W, height: RATIO_H } }; // L3 = Q
+const l4Static = { type: 'sprite', assetKey: 'jack_reelstrip.png',sizeRatios: { width: RATIO_W, height: RATIO_H } }; // L4 = J
+const l5Static = { type: 'sprite', assetKey: 'jack_reelstrip.png',sizeRatios: { width: RATIO_W, height: RATIO_H } }; // L5 временно = J
 
 
 // Scatter / Wild
-const sStatic = { type: 'sprite', assetKey: 'scroll_symbol.png',       sizeRatios: { width: 1, height: 1 } };
+const sStatic = { type: 'sprite', assetKey: 'scroll_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
 // Ако искаш Wild от атласа, кажи кой PNG да използваме. Засега пазя стария w.png:
 /*const wStatic = { type: 'sprite', assetKey: 'w.png',                   sizeRatios: { width: 1.12, height: 1.12 } };*/
 

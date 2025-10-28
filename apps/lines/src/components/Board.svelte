@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	import type { RawSymbol, Position } from '../game/types';
-
+	import { Container } from 'pixi-svelte';
 	export type EmitterEventBoard =
 			| { type: 'boardSettle'; board: RawSymbol[][] }
 			| { type: 'boardShow' }
@@ -66,17 +66,19 @@
 	context.stateGameDerived?.enhancedBoard?.readyToSpinEffect?.();
 </script>
 
-{#if show}
-	<BoardContext animate={false}>
-		<BoardContainer>
-			<BoardMask />
-			<BoardBase />
-		</BoardContainer>
-	</BoardContext>
+<Container>
+	{#if show}
+		<BoardContext animate={false}>
+			<BoardContainer>
+				<BoardMask />
+				<BoardBase />
+			</BoardContainer>
+		</BoardContext>
 
-	<BoardContext animate={true}>
-		<BoardContainer>
-			<BoardBase />
-		</BoardContainer>
-	</BoardContext>
-{/if}
+		<BoardContext animate={true}>
+			<BoardContainer>
+				<BoardBase />
+			</BoardContainer>
+		</BoardContext>
+	{/if}
+</Container>

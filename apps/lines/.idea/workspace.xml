@@ -5,92 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="218ea86c-d6fa-46f3-adef-f22adb2ad16f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/JackpotMeters.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ReelsHeader.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TitlePulse.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/prizeFont/prizeFont.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/fonts/prizeFont/spritesheet-export.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Background.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Background.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BoardFrame.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardFrame.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BoardMask.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardMask.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoadingScreen.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadingScreen.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PressToContinue.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PressToContinue.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ReelSymbol.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReelSymbol.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Symbol.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Symbol.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SymbolSprite.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SymbolSprite.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/assets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/assets.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/stateGame.svelte.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/stateGame.svelte.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/foregroundAnimation/mm_bg.webp" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/spines/foregroundAnimation/mm_bg.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/foregroundFeatureAnimation/mm_bg_feature.webp" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/spines/foregroundFeatureAnimation/mm_bg_feature.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/loader/loader.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/spines/loader/loader.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/loader/loader.webp" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/spines/loader/loader.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/h1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/h2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/h3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/h4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/h5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/l1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/l2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/l3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/l4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/symbols.atlas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/symbols.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/spines/symbols/symbols.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/reelsFrame/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/reelsFrame/reels_frame.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/reelsFrame/reels_frame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbolsStatic/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbolsStatic/symbolsStatic.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbolsStatic/symbolsStatic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbolsStatic/symbolsStatic.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonAutoSpin.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonAutoSpin.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBet.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBet.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBetAutoSpinsCounter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBetAutoSpinsCounter.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBetProvider.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBetProvider.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBuyBonus.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonBuyBonus.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonDecrease.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonDecrease.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonDrawer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonDrawer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonGameRules.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonGameRules.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonIncrease.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonIncrease.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonMenu.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonMenu.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonMenuClose.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonMenuClose.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonPayTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonPayTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonSettings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonSettings.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonSoundSwitch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonSoundSwitch.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonTurbo.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/ButtonTurbo.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelBalance.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelBalance.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelBet.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelBet.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelFreeSpinCounter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelFreeSpinCounter.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelWin.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LabelWin.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutDesktop.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutDesktop.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutLandscape.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutLandscape.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutPortrait.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutPortrait.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutTablet.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/LayoutTablet.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UI.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UI.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiButton.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiDoublePress.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiDoublePress.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiFadeContainer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiFadeContainer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiGameName.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiGameName.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiLabel.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiLabel.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiSprite.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/components/UiSprite.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/context.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/i18nDerived.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/i18nDerived.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/en.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/en.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/zh.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/i18n/messagesMap/zh.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/components-ui-pixi/src/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/pixi-svelte/src/lib/components/InitialiseApplication.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/pixi-svelte/src/lib/components/InitialiseApplication.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../packages/pixi-svelte/src/lib/components/Sprite.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../../packages/pixi-svelte/src/lib/components/Sprite.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +40,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/StakeEngine/web-sdk.git&quot;,
+    &quot;url&quot;: &quot;git@github.com:Motikata/stake-game-hold-and-win.git&quot;,
     &quot;accountId&quot;: &quot;f509e6fe-c4bd-4e61-bf36-d11ee4489e5d&quot;
   }
 }</component>
@@ -126,27 +49,31 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="341CTChqvUWXIQ7FWCt20E5pKYt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu-24.04/home/johnmo/web-sdk/apps/lines/static/assets/fonts/prizeFont",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu-24.04/home/johnmo/web-sdk/apps/lines/static/assets/fonts/prizeFont&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\fonts\prizeFont" />
@@ -207,6 +134,8 @@
       <workItem from="1760965548354" duration="37752000" />
       <workItem from="1761113257837" duration="50999000" />
       <workItem from="1761252912480" duration="6204000" />
+      <workItem from="1761669849226" duration="10422000" />
+      <workItem from="1761683354904" duration="2011000" />
     </task>
     <servers />
   </component>

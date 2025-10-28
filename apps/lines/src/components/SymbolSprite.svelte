@@ -31,6 +31,6 @@
 	anchor={0.5}
 	key={props.symbolInfo.assetKey}
 	width={SYMBOL_SIZE * props.symbolInfo.sizeRatios.width}
-	height={190}
+	height={SYMBOL_SIZE * props.symbolInfo.sizeRatios.height}
 />
 
