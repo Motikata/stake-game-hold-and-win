@@ -60,6 +60,7 @@
 
 				<MainContainer>
 					<Container
+						name="WinContainer"
 						x={context.stateGameDerived.boardLayout().x}
 						y={context.stateGameDerived.boardLayout().y}
 					>

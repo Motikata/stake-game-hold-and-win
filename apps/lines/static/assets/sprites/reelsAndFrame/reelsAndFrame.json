@@ -148,16 +148,16 @@
       "frame": {
         "x": 1420,
         "y": 745,
-        "w": 692,
-        "h": 378
+        "w": 673,
+        "h": 402
       },
       "rotated": true,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 5,
-        "y": 24,
-        "w": 692,
-        "h": 378
+        "x": 13,
+        "y": 0,
+        "w": 673,
+        "h": 402
       },
       "sourceSize": {
         "w": 711,
@@ -170,7 +170,7 @@
     },
     "lightning_cash_cash.png": {
       "frame": {
-        "x": 1798,
+        "x": 1822,
         "y": 745,
         "w": 356,
         "h": 173
@@ -199,7 +199,7 @@
     "image": "reelsAndFrame.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1972,
+      "w": 1995,
       "h": 2001
     },
     "scale": 1

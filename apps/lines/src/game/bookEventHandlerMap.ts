@@ -1,16 +1,19 @@
 import _ from 'lodash';
 
-import { recordBookEvent, checkIsMultipleRevealEvents, type BookEventHandlerMap } from 'utils-book';
-import { stateBet, stateUi } from 'state-shared';
-import { sequence } from 'utils-shared/sequence';
+import {type BookEventHandlerMap, checkIsMultipleRevealEvents, recordBookEvent} from 'utils-book';
+import {stateBet, stateUi} from 'state-shared';
+import {sequence} from 'utils-shared/sequence';
 
-import { eventEmitter } from './eventEmitter';
-import { playBookEvent } from './utils';
-import { winLevelMap, type WinLevel, type WinLevelData } from './winLevelMap';
-import { stateGame, stateGameDerived } from './stateGame.svelte';
-import type { BookEvent, BookEventOfType, BookEventContext } from './typesBookEvent';
-import type { Position } from './types';
+import {eventEmitter} from './eventEmitter';
+import {findContainerByName, getSymbolX, getSymbolY, playBookEvent} from './utils';
+import {type WinLevel, type WinLevelData, winLevelMap} from './winLevelMap';
+import {stateGame, stateGameDerived} from './stateGame.svelte';
+import type {BookEvent, BookEventContext, BookEventOfType} from './typesBookEvent';
+import type {Position} from './types';
 import config from './config';
+import type {CashCoord, CashCoords} from './types/CashCoord';
+import {SignalService} from "../signals/SignalService";
+import {getContextApp} from "../../../../packages/pixi-svelte";
 
 const winLevelSoundsPlay = ({ winLevelData }: { winLevelData: WinLevelData }) => {
 	console.log('[BOOK] 🔊 play winLevelSounds', winLevelData);
@@ -52,13 +55,11 @@ const animateSymbols = async ({ positions }: { positions: Position[] }) => {
 		console.warn('[BOOK] ⚠️ Some symbol positions invalid, skipping missing reels.');
 	}
 
-	// ако нищо валидно – приключваме веднага
 	if (valid.length === 0) {
 		console.log('[BOOK] 🚫 No valid positions, skipping symbol animation.');
 		return;
 	}
 
-	// safety timeout да не увисва
 	let timeoutHit = false;
 	const timeout = new Promise<void>((resolve) =>
 		setTimeout(() => {
@@ -82,12 +83,60 @@ const animateSymbols = async ({ positions }: { positions: Position[] }) => {
 	console.log('[BOOK] ✅ animateSymbols done (valid:', valid.length, ')');
 };
 
+function getDevMockConfig():
+	| {
+	enabled: boolean;
+	symbol: string;
+	positions?: { reel: number; row: number }[];
+	amount?: number;
+}
+	| null {
+	// работим само в DEV и в браузър
+	if (!(import.meta.env?.DEV && typeof window !== 'undefined')) return null;
+
+	const qs = new URLSearchParams(window.location.search);
+
+	// enabled ако има поне един от mock* параметрите
+	// и ако има 'mock', той да е truthy ('1','true','yes','cash')
+	const hasAnyMockParam = ['mock', 'mockSymbol', 'mockPos', 'mockAmount'].some((k) => qs.has(k));
+	const mockFlag = (qs.get('mock') || '').toLowerCase();
+	const mockTruthy = mockFlag === '' || ['1', 'true', 'yes', 'cash'].includes(mockFlag);
+	const enabled = hasAnyMockParam && (qs.has('mock') ? mockTruthy : true);
+
+	if (!enabled) return null;
+
+	// mock=1&mockSymbol=CASH&mockPos=0:1,1:2,2:1&mockAmount=750
+	const parsePos = (s?: string) =>
+		(s ?? '')
+			.split(',')
+			.map((p) => p.trim())
+			.filter(Boolean)
+			.map((p) => {
+				const [r, y] = p.split(':').map(Number);
+				return { reel: r, row: y };
+			})
+			.filter((x) => Number.isFinite(x.reel) && Number.isFinite(x.row));
+
+	// helper за кръгли суми (по 50)
+	const randStepInt = (min: number, max: number, step = 50) => {
+		const steps = Math.floor((max - min) / step);
+		return min + Math.floor(Math.random() * (steps + 1)) * step;
+	};
+
+	const symbol = qs.get('mockSymbol') ?? 'CASH';
+	const positions = parsePos(qs.get('mockPos')) || undefined;
+
+	const amountQS = qs.get('mockAmount');
+	const amount = Number.isFinite(Number(amountQS)) ? Number(amountQS) : randStepInt(50, 5000, 50);
+
+	return { enabled, symbol, positions, amount };
+}
+
 export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContext> = {
 	// ---- SPIN / REVEAL ------------------------------------------------------
 	reveal: async (bookEvent: BookEventOfType<'reveal'>, { bookEvents }: BookEventContext) => {
 		console.log('[BOOK] ▶️ reveal start', bookEvent);
 
-		// ЛОГНИ борда като имена, за да видим източника на W
 		try {
 			const namesTable = bookEvent.board.map((col) => col.map((s) => s.name));
 			console.group('[BOOK][REVEAL] incoming board names');
@@ -97,7 +146,6 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 			console.warn('[BOOK][REVEAL] names log failed', e);
 		}
 
-		// НОРМАЛИЗАЦИЯ: в тази игра не ползваме W → заменяме с L1 (или смени с 'X', ако искаш празен)
 		const normalizeName = (name: string) => (name === 'W' ? 'L1' : name);
 
 		const cleanedBoard = bookEvent.board.map((col) =>
@@ -118,21 +166,117 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 
 		stateGame.gameType = cleanedReveal.gameType;
 
+		// ---------- DEV: mock преди spin() ----------
+		const dev = getDevMockConfig();
+		if (dev?.enabled) {
+			const positions =
+				dev.positions ??
+				([
+					{ reel: 0, row: 1 },
+					{ reel: 1, row: 1 },
+					{ reel: 2, row: 1 },
+				] as { reel: number; row: number }[]);
+
+			for (const { reel, row } of positions) {
+				const col = cleanedReveal.board[reel];
+				if (col?.[row]) {
+					col[row] = {
+						...col[row],
+						name: dev.symbol,
+						amount: dev.amount ?? (col[row] as any)?.amount ?? 0,
+					};
+				}
+			}
+			console.info('[DEV] mock BEFORE spin → symbols replaced to', dev.symbol, positions, 'amount=', dev.amount);
+		}
+		// -------------------------------------------
+
+		// ---- SAFE PADDING FALLBACK ----------------
+		const paddingBoard = (config as any)?.paddingReels?.[cleanedReveal.gameType] ?? cleanedReveal.board;
+
 		await stateGameDerived.enhancedBoard.spin({
 			revealEvent: cleanedReveal,
-			paddingBoard: config.paddingReels[cleanedReveal.gameType],
+			paddingBoard,
 		});
+
+		// ---- DEV: след spin() (непипаме) ----------
+		try {
+			if (dev?.enabled) {
+				const mod = await import('./mockAfterSpin');
+				// @ts-ignore
+				const runMockAfterSpin = (mod as any).runMockAfterSpin ?? (mod as any).default;
+				if (typeof runMockAfterSpin === 'function') {
+					await runMockAfterSpin({
+						symbol: dev.symbol,
+						amount: dev.amount,
+						positions:
+							dev.positions ??
+							([
+								{ reel: 0, row: 1 },
+								{ reel: 1, row: 1 },
+								{ reel: 2, row: 1 },
+							] as { reel: number; row: number }[]),
+					});
+				} else {
+					console.warn('[DEV] mockAfterSpin missing exported function');
+				}
+			}
+		} catch (e) {
+			console.warn('[DEV] mockAfterSpin failed', e);
+		}
+		// -------------------------------------------
+
+		// 👉 събираме всички CASH позиции
+		const ctx = stateGameDerived;
+
+		const cashByReel = ctx.enhancedBoard.board.map((r) => {
+			const rows = r.reelState.symbols
+				.map((s: { rawSymbol: { name: string } }, row: number) => (s.rawSymbol.name === 'CASH' ? row : -1))
+				.filter((row: number) => row !== -1);
+			return { reel: r.reelIndex, rows };
+		});
+
+		// координати за всеки CASH
+		const cashCoordsByReel: CashCoords[] = cashByReel.map(({ reel, rows }) =>
+			rows.map((row: number): CashCoord => ({
+				reel,
+				row,
+				x: getSymbolX(reel),
+				y: getSymbolY(row),
+			})),
+		);
+
+		// ако има поне един CASH → колект към „слънцето“
+		const hasAnyCash = cashCoordsByReel.some((arr) => arr.length > 0);
+		if (hasAnyCash) {
+			const cashCoordsFlat: CashCoord[] = cashCoordsByReel.flat();
+
+			// target: приблизително центъра по X и малко над борда по Y
+			const b = ctx.boardLayout();
+			const to = { x: 0, y: 0 };
+
+			// !!! ФИКС: Ключът трябва да е toGlobal, за да съвпадне с CollectEffectData !!!
+			SignalService.get().dispatch("fx:collectToSun", {
+				target: this,
+				data: {
+					type: 'fx:collectToSun',
+					items: cashCoordsFlat,
+					toGlobal: to, // <--- ВЕЧЕ Е ПРАВИЛНО
+				}
+			});
+
+			console.log('[BOOK] → fx:collectToSun dispatch ', cashCoordsFlat);
+		}
 
 		console.log('[BOOK] ✅ spin finished for reveal');
 		eventEmitter.broadcast({ type: 'soundScatterCounterClear' });
 
-		// Важно: приключи събитието reveal, за да продължи машината
+		// край на reveal
 		eventEmitter.broadcast({ type: 'endEvent', name: 'reveal' });
 		console.log('[BOOK] 🔔 endEvent: reveal dispatched');
 	},
 
-	// ---- SIDE-EVENTS, КОИТО МОГАТ ДА БЛОКИРАТ ------------------------------
-	// Някои рундове пращат newExpandingWilds – правим no-op handler и приключваме събитието.
+	// ---- SIDE-EVENTS --------------------------------------------------------
 	newExpandingWilds: async (bookEvent: any) => {
 		console.log('[BOOK] 🌱 newExpandingWilds (no-op)', bookEvent);
 		eventEmitter.broadcast({ type: 'endEvent', name: 'newExpandingWilds' });
@@ -146,14 +290,12 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 			await animateSymbols({ positions: win.positions });
 		});
 		console.log('[BOOK] ✅ winInfo done');
-		// Важно: приключи winInfo, за да дойде updateFreeSpin/next reveal
 		eventEmitter.broadcast({ type: 'endEvent', name: 'winInfo' });
 	},
 
 	setTotalWin: async (bookEvent: BookEventOfType<'setTotalWin'>) => {
 		console.log('[BOOK] 🧮 setTotalWin', bookEvent.amount);
 		stateBet.winBookEventAmount = bookEvent.amount;
-		// обикновено runner-ът не изисква endEvent тук, но няма да навреди:
 		eventEmitter.broadcast({ type: 'endEvent', name: 'setTotalWin' });
 	},
 
@@ -205,10 +347,10 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 		stateUi.freeSpinCounterShow = true;
 		eventEmitter.broadcast({
 			type: 'freeSpinCounterUpdate',
-			current: undefined,
-			total: bookEvent.totalFs,
+			current: bookEvent.amount + 1,
+			total: bookEvent.total,
 		});
-		stateUi.freeSpinCounterTotal = bookEvent.totalFs;
+		stateUi.freeSpinCounterTotal = bookEvent.total;
 
 		await eventEmitter.broadcastAsync({ type: 'uiShow' });
 		await eventEmitter.broadcastAsync({ type: 'drawerButtonShow' });
@@ -266,9 +408,7 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 		const { bookEvents } = bookEvent;
 
 		function findLastBookEvent<T>(type: T) {
-			return _.findLast(bookEvents, (be) => be.type === type) as
-				| BookEventOfType<T>
-				| undefined;
+			return _.findLast(bookEvents, (be) => be.type === type) as | BookEventOfType<T> | undefined;
 		}
 
 		const lastFreeSpinTriggerEvent = findLastBookEvent('freeSpinTrigger' as const);
@@ -277,9 +417,9 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 		const lastUpdateGlobalMultEvent = findLastBookEvent('updateGlobalMult' as const);
 
 		if (lastFreeSpinTriggerEvent) await playBookEvent(lastFreeSpinTriggerEvent, { bookEvents });
-		if (lastUpdateFreeSpinEvent) playBookEvent(lastUpdateFreeSpinEvent, { bookEvents });
-		if (lastSetTotalWinEvent) playBookEvent(lastSetTotalWinEvent, { bookEvents });
-		if (lastUpdateGlobalMultEvent) playBookEvent(lastUpdateGlobalMultEvent, { bookEvents });
+		if (lastUpdateFreeSpinEvent) await playBookEvent(lastUpdateFreeSpinEvent, { bookEvents });
+		if (lastSetTotalWinEvent) await playBookEvent(lastSetTotalWinEvent, { bookEvents });
+		if (lastUpdateGlobalMultEvent) await playBookEvent(lastUpdateGlobalMultEvent, { bookEvents });
 
 		console.log('[BOOK] ✅ createBonusSnapshot done');
 	},

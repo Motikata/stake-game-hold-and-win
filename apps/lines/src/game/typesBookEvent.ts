@@ -25,6 +25,8 @@ type BookEventFinalWin = {
 };
 
 type BookEventFreeSpinTrigger = {
+	total: number;
+    amount: number;
 	index: number;
 	type: 'freeSpinTrigger';
 	totalFs: number;

@@ -6,7 +6,7 @@
 	const context = getContext();
 </script>
 
-<Container x={300} alpha={0.5}>
+<Container name="I18nTest" x={300} alpha={0.5}>
 	<Rectangle width={280} height={160} />
 	<Text text={'TRANSLATIONS TEST'} style={{ fill: 0xffffff }} />
 	<Text text={`${context.i18nDerived.home()} (from game)`} style={{ fill: 0xffffff }} y={30} />

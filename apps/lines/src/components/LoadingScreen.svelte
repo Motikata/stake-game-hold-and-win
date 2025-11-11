@@ -22,6 +22,7 @@
 <FadeContainer show={loadingType === 'start'}>
 	<MainContainer>
 		<Container
+			name="LoadingScreenContainer"
 			x={context.stateLayoutDerived.mainLayout().width * 0.5}
 			y={context.stateLayoutDerived.mainLayout().height * 0.5}
 		>

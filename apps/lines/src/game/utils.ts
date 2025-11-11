@@ -16,8 +16,51 @@ import type { Bet, BookEventOfType } from './typesBookEvent';
 import { bookEventHandlerMap } from './bookEventHandlerMap';
 import type { RawSymbol, SymbolState } from './types';
 
+
+import * as PIXI from 'pixi.js';
+import type { DisplayObject, Container } from 'pixi.js';
+
+// Интерфейс за резултата: Обектът и неговото пълно име (за по-лесен дебъг)
+interface NamedObject {
+	name: string;
+	object: DisplayObject;
+}
+
+/**
+ * Рекурсивно обхожда PixiJS йерархията, започвайки от даден DisplayObject.
+ * Връща масив от всички обекти, които имат зададено име (displayObject.name).
+ *
+ * @param root - Началният обхват на търсене (напр. app.stage или друг Container).
+ * @param results - (Опционално) Акумулатор за резултатите.
+ * @returns Масив от намерените обекти с техните имена.
+ */
+export function getNamedChildrenRecursive(root: DisplayObject, results: NamedObject[] = []): NamedObject[] {
+
+	// 1. Проверяваме дали текущият обект има име
+	if (root.name) {
+		results.push({
+			name: root.name,
+			object: root,
+		});
+	}
+
+	// 2. Проверяваме дали обектът е контейнер (може да има деца)
+	// Използваме type guard, за да сме сигурни, че имаме достъп до children
+	if ('children' in root && Array.isArray((root as Container).children)) {
+
+		// 3. Рекурсивно извикваме функцията за всяко дете
+		for (const child of (root as Container).children) {
+			getNamedChildrenRecursive(child, results);
+		}
+	}
+
+	return results;
+}
+
+// allNamedObjects е масив от обекти, съдържащи името и самия PIXI DisplayObject.
+
 /* ──────────────────────────────────────────────────────────────────────────
- *  Play helpers
+ * Play helpers
  * ────────────────────────────────────────────────────────────────────────── */
 export const { getEmptyBoard } = createGetEmptyPaddedBoard({
 	reelsDimensions: BOARD_DIMENSIONS,
@@ -32,7 +75,7 @@ export const playBet = async (bet: Bet) => {
 };
 
 /* ──────────────────────────────────────────────────────────────────────────
- *  Resume helpers
+ * Resume helpers
  * ────────────────────────────────────────────────────────────────────────── */
 const BOOK_EVENT_TYPES_TO_RESERVE_FOR_SNAPSHOT = [
 	'updateGlobalMult',
@@ -64,7 +107,7 @@ export const convertTorResumableBet = (lastBetData: Bet) => {
 };
 
 /* ──────────────────────────────────────────────────────────────────────────
- *  Geometry
+ * Geometry
  * ────────────────────────────────────────────────────────────────────────── */
 
 // X позиция на символа – смятаме реалната ширина на всяка колона,
@@ -85,7 +128,7 @@ export const getSymbolY = (symbolIndexOfBoard: number) =>
 	(symbolIndexOfBoard + 0.5) * SYMBOL_SIZE;
 
 /* ──────────────────────────────────────────────────────────────────────────
- *  Symbol lookup (safe + debug)
+ * Symbol lookup (safe + debug)
  * ────────────────────────────────────────────────────────────────────────── */
 
 const REPORTED_UNKNOWN = new Set<string>();
@@ -154,3 +197,28 @@ export const getSymbolInfo = ({
 	// Всичко е наред
 	return byState;
 };
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * PIXI Helpers
+ * ────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Търси рекурсивно PIXI Container по име в дадения root.
+ * Връща първия намерен Container.
+ *
+ * @param root - Началният DisplayObject (напр. app.stage).
+ * @param name - Името на търсения контейнер.
+ * @returns Намереният Container или null.
+ */
+export function findContainerByName(root: DisplayObject, name: string): Container | null {
+
+	// Използваме getNamedChildrenRecursive, за да съберем всички именувани обекти
+	const allNamedObjects = getNamedChildrenRecursive(root);
+
+	// Филтрираме и връщаме първия, който отговаря на името и е Container
+	const found = allNamedObjects.find(
+		(item) => item.name === name && (item.object instanceof PIXI.Container)
+	);
+
+	return found ? (found.object as Container) : null;
+}

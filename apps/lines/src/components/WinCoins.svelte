@@ -23,6 +23,7 @@
 {#if config}
 	<MainContainer>
 		<Container
+			name="WinCoinsContainer"
 			x={context.stateGameDerived.boardLayout().x}
 			y={context.stateGameDerived.boardLayout().y}
 		>

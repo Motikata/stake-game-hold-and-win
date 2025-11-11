@@ -5,15 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="218ea86c-d6fa-46f3-adef-f22adb2ad16f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/OverlaySymbols.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/board/BoardAnimEvents.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/fx/CollectToSunEffect.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/fx/OverlayLayer.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/fx/flyAmount.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/mockAfterSpin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/runtimeRegistry.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/showCashDemo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/sleep.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/types/CashCoord.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signals/GameLogger.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signals/Logger.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signals/SignalService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/boardLayer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/overlaySymbolStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/uiPositions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/assets/fonts/prizeFont/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BoardContainer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardContainer.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BoardMask.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardMask.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EnableGameActor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EnableGameActor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FreeSpinCounter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FreeSpinCounter.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/I18nTest.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/I18nTest.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoadingScreen.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadingScreen.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ReelsHeader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReelsHeader.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Symbol.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Symbol.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SymbolSprite.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SymbolSprite.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SymbolWrap.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SymbolWrap.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TitlePulse.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TitlePulse.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Win.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Win.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WinCoins.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WinCoins.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/assets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/assets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/stateApp.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/stateApp.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/stateGame.svelte.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/stateGame.svelte.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/typesBookEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/typesBookEvent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/fonts/prizeFont/spritesheet-export.xml" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/fonts/prizeFont/prizeFont.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/sprites/reelsAndFrame/reelsAndFrame.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/sprites/reelsAndFrame/reelsAndFrame.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/sprites/reelsAndFrame/reelsAndFrame.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/sprites/reelsAndFrame/reelsAndFrame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbols/symbols.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/sprites/symbols/symbols.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/sprites/symbols/symbols.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/sprites/symbols/symbols.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +65,14 @@
         <option value="ReelsHeader" />
         <option value="JackpotMeters" />
         <option value="TitlePulse" />
+        <option value="MeterCollect.svelte" />
+        <option value="OverlayFx" />
+        <option value="boardAnimEvent" />
+        <option value="overlayLayyer" />
+        <option value="OverlaySymbols.svelte" />
+        <option value="overlaySymbolStore" />
+        <option value="TypeScript File" />
+        <option value="OverlayLayer.svelte" />
       </list>
     </option>
   </component>
@@ -56,37 +103,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu-24.04/home/johnmo/web-sdk/apps/lines/static/assets/fonts/prizeFont&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.?sessionID=6409d398-6618-4b10-9e9d-579d87358533&rgs_url=rgs.stake-engine.com&lang=en&currency=EUR&device=desktop&social=false&demo=true&.executor": "Run",
+    "JavaScript Debug.debug.executor": "Debug",
+    "JavaScript Debug.localhost:3001.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu-24.04/home/johnmo/web-sdk/apps/lines/src/game",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\src\game" />
+      <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\src\signals" />
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\fonts\prizeFont" />
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\sprites\reelsAndFrame" />
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\sprites\symbols" />
-      <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\src\signals" />
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\sprites\ui" />
       <recent name="\\wsl.localhost\Ubuntu-24.04\home\johnmo\web-sdk\apps\lines\static\assets\sprites\reelsAndFrame" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.debug">
+    <configuration name="debug" type="JavascriptDebugType" temporary="true" uri="http://localhost:3001/?sessionID=6409d398-6618-4b10-9e9d-579d87358533&amp;rgs_url=rgs.stake-engine.com&amp;lang=en&amp;currency=EUR&amp;device=desktop&amp;social=false&amp;demo=true&amp;">
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -97,8 +153,13 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.debug" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.debug" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -136,6 +197,12 @@
       <workItem from="1761252912480" duration="6204000" />
       <workItem from="1761669849226" duration="10422000" />
       <workItem from="1761683354904" duration="2011000" />
+      <workItem from="1762176980831" duration="1058000" />
+      <workItem from="1762197475637" duration="2486000" />
+      <workItem from="1762448856091" duration="5841000" />
+      <workItem from="1762461768050" duration="1795000" />
+      <workItem from="1762598013239" duration="44164000" />
+      <workItem from="1762764745827" duration="7096000" />
     </task>
     <servers />
   </component>

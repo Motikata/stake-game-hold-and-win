@@ -2,13 +2,11 @@ import _ from 'lodash';
 import type { RawSymbol, SymbolState } from './types';
 
 export const SYMBOL_SIZE = 130;
+export const SYMBOL_HIGHT = 180;
 export const REEL_GAP = Math.round(SYMBOL_SIZE * 3); // пробвай 0.10–0.20 от SYMBOL_SIZE
 
 export const REEL_PADDING = 0.53;
-//export const REEL_GAP = Math.round(SYMBOL_SIZE * 0.18); // ~23px при 130
 
-// Ново: вертикален GAP между видимите редове
-export const ROW_GAP  = Math.round(SYMBOL_SIZE * 0.22); // ~29px при 130
 // initial board (padded top and bottom) — 3 reels × (3 видими + 2 padding)
 export const INITIAL_BOARD: RawSymbol[][] = [
 	[
@@ -34,8 +32,7 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 	],
 ];
 
-// важно: y = видимите редове = 5 - 2 = 3
-export const BOARD_DIMENSIONS = { x: INITIAL_BOARD.length, y: INITIAL_BOARD[0].length - 2 };
+export const BOARD_DIMENSIONS = { x: 3, y: 3 };
 
 // (BOARD_SIZES, SYMBOL_SIZE и всичко останало може да остане както е)
 export const BOARD_SIZES = {
@@ -142,6 +139,16 @@ const sStatic = { type: 'sprite', assetKey: 'scroll_symbol.png',       sizeRatio
 // Ако искаш Wild от атласа, кажи кой PNG да използваме. Засега пазя стария w.png:
 /*const wStatic = { type: 'sprite', assetKey: 'w.png',                   sizeRatios: { width: 1.12, height: 1.12 } };*/
 
+//cash prize symbols
+const coinCashStatic = { type: 'sprite', assetKey: 'coin_cash_prize_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_W } };
+const accumulatorStatic = { type: 'sprite', assetKey: 'accumulator_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const minorStatic = { type: 'sprite', assetKey: 'minor_prize_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const miniStatic = { type: 'sprite', assetKey: 'mini_prize_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const megaStatic = { type: 'sprite', assetKey: 'mega_prize_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
+const grandStatic = { type: 'sprite', assetKey: 'grand_prize_symbol.png',       sizeRatios: { width: RATIO_W, height: RATIO_H } };
+
+
+
 const wSizeRatios = { width: 1.5 * 0.9, height: SPECIAL_SYMBOL_SIZE * 1.15 };
 const sSizeRatios = { width: 2.5, height: SPECIAL_SYMBOL_SIZE * 2.3 };
 // --------------------------------------------------------------------
@@ -227,14 +234,6 @@ export const SYMBOL_INFO_MAP = {
 		spin: l5Static,
 		land: l5Static,
 	},
-/*	W: {
-		explosion,
-		postWinStatic: wStatic,
-		static: wStatic,
-		spin: wStatic,
-		win: wStatic,
-		land: wStatic,
-	},*/
 	S: {
 		explosion,
 		postWinStatic: sStatic,
@@ -252,6 +251,54 @@ export const SYMBOL_INFO_MAP = {
 		static: l4Static,
 		spin: l4Static,
 		land: l4Static,
+	},
+	CASH: {
+		explosion,
+		win: coinCashStatic,
+		postWinStatic: coinCashStatic,
+		static: coinCashStatic,
+		spin: coinCashStatic,
+		land: coinCashStatic,
+	},
+	ACC: {
+		explosion,
+		win: accumulatorStatic,
+		postWinStatic: accumulatorStatic,
+		static: accumulatorStatic,
+		spin: accumulatorStatic,
+		land: accumulatorStatic,
+	},
+	MINOR: {
+		explosion,
+		win: minorStatic,
+		postWinStatic: minorStatic,
+		static: minorStatic,
+		spin: minorStatic,
+		land: minorStatic,
+	},
+	MINI: {
+		explosion,
+		win: miniStatic,
+		postWinStatic: miniStatic,
+		static: miniStatic,
+		spin: miniStatic,
+		land: miniStatic,
+	},
+	MEGA: {
+		explosion,
+		win: megaStatic,
+		postWinStatic: megaStatic,
+		static: megaStatic,
+		spin: megaStatic,
+		land: megaStatic,
+	},
+	GRAND: {
+		explosion,
+		win: grandStatic,
+		postWinStatic: grandStatic,
+		static: grandStatic,
+		spin: grandStatic,
+		land: grandStatic,
 	},
 
 } as const;

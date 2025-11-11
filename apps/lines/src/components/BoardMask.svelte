@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Rectangle, Container } from 'pixi-svelte';
+	import { Rectangle } from 'pixi-svelte';
 	import { getContext } from '../game/context';
 	import { SYMBOL_SIZE, REEL_GAP } from '../game/constants';
 
@@ -18,10 +18,10 @@
 	const OVERSCAN_Y_RATIO = 0; // 8% от височината на символа
 	//const PAD_Y = Math.round(SYMBOL_SIZE * OVERSCAN_Y_RATIO);
 </script>
-<Container name="BoardMask">
+
 {#if props.debug}
 	<Rectangle
-			name="BoardMaskRectangle"
+			name="BoardMaskRectangle_Debug"
 			alpha={0.2}
 			backgroundColor={0xffffff}
 			width={board.width}
@@ -34,7 +34,7 @@
 		name="BoardMaskRectangle"
 		isMask
 		x={-PAD_X}
+		y={81}
 		width={board.width + PAD_X * 2}
 		height={board.height + 155}
 />
-</Container>

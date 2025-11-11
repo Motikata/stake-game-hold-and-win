@@ -29,7 +29,7 @@ export default {
 	goldBlur:   { type: 'font', src: new URL('../../assets/fonts/goldBlur/miningfont_gold_blur.xml', import.meta.url).href },
 	silverFont: { type: 'font', src: new URL('../../assets/fonts/silverFont/mm_silver.xml',       import.meta.url).href },
 	purpleFont: { type: 'font', src: new URL('../../assets/fonts/purpleFont/mm_purple.xml',       import.meta.url).href },
-	purpleFont: { type: 'font', src: new URL('../../assets/fonts/prizeFont/mm_purple.xml',       import.meta.url).href },
+	prizeFont: { type: 'font', src: new URL('../../assets/fonts/prizeFont/prizeFont.xml',       import.meta.url).href },
 
 	bigwin: { type: 'spine', src: { atlas: new URL('../../assets/spines/bigwin/big_wins.atlas', import.meta.url).href, skeleton: new URL('../../assets/spines/bigwin/mm_bigwin.json', import.meta.url).href, scale: 2 } },
 

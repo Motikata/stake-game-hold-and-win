@@ -24,8 +24,7 @@
     };
 
     const props = $props<Props>();
-
-    const keyName   = $derived(props.keyName   ?? 'lightning_cash_cash.png');
+    const keyName   = 'lightning_cash_cash.png';
     const x         = $derived(props.x         ?? 0);
     const y         = $derived(props.y         ?? 0);
     const anchor    = $derived(props.anchor    ?? 0.5);

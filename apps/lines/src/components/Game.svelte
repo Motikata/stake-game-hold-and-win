@@ -1,15 +1,15 @@
 <script lang="ts">
-	import {onMount} from 'svelte';
+	import { onMount, onDestroy, tick } from 'svelte';
 
-	import {EnableHotkey} from 'components-shared';
-	import {MainContainer} from 'components-layout';
-	import {App, REM, Text} from 'pixi-svelte';
-	import {stateModal} from 'state-shared';
+	import { EnableHotkey, getContextBoard } from 'components-shared';
+	import { MainContainer } from 'components-layout';
+	import { App, REM, Text, Container as SContainer } from 'pixi-svelte';
+	import { stateModal } from 'state-shared';
 
-	import {UI, UiGameName} from 'components-ui-pixi';
-	import {GameVersion, Modals} from 'components-ui-html';
+	import { UI, UiGameName } from 'components-ui-pixi';
+	import { GameVersion, Modals } from 'components-ui-html';
 
-	import {getContext} from '../game/context';
+	import { getContext } from '../game/context';
 	import { EnablePixiExtension } from 'components-pixi';
 	import EnableSound from './EnableSound.svelte';
 	import EnableGameActor from './EnableGameActor.svelte';
@@ -25,9 +25,11 @@
 	import FreeSpinCounter from './FreeSpinCounter.svelte';
 	import FreeSpinOutro from './FreeSpinOutro.svelte';
 	import Transition from './Transition.svelte';
-	import I18nTest from './I18nTest.svelte';
-	import ReelsHeader from "./ReelsHeader.svelte";
-	import JackpotMeters from "./JackpotMeters.svelte";
+	import ReelsHeader from './ReelsHeader.svelte';
+	import JackpotMeters from './JackpotMeters.svelte';
+	import { showCashDemo } from '../game/showCashDemo';
+	import OverlayLayer from "../game/fx/OverlayLayer.svelte";
+
 
 	const context = getContext();
 
@@ -38,57 +40,57 @@
 			stateModal.modal = { name: 'buyBonusConfirm' };
 		},
 	});
+
+	// достъпно в конзолата за тестове
+	(window as any).showCashDemo = showCashDemo;
+
 </script>
 
-<App>
-	<EnablePixiExtension/>
+<App name="HoldAndWinGame">
+	<EnablePixiExtension />
 	<EnableSound />
 	<EnableHotkey />
 	<EnableGameActor />
 
-	<Background />
+	<Background name="Background" />
 
 	{#if context.stateLayout.showLoadingScreen}
 		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />
 	{:else}
 		<ResumeBet />
-		<!--
-			The reason why <Sound /> is rendered after clicking the loading screen:
-			"Autoplay with sound is allowed if: The user has interacted with the domain (click, tap, etc.)."
-			Ref: https://developer.chrome.com/blog/autoplay
-		-->
+		<!-- Autoplay: звуците след потребителско действие -->
 		<Sound />
 
-		<MainContainer>
-			<ReelsHeader/>
-			<JackpotMeters/>
-
+		<MainContainer name="ReelsAndJackpotContainer">
+			<ReelsHeader />
+			<JackpotMeters />
 			<BoardFrame />
 		</MainContainer>
 
-		<MainContainer>
+		<MainContainer name="BoardAndAnticipationsContainer">
 			<Board />
 			<Anticipations />
 		</MainContainer>
-
+		<OverlayLayer/>
 		<UI>
 			{#snippet gameName()}
 				<UiGameName name="Lightning cash" />
 			{/snippet}
 			{#snippet logo()}
 				<Text
-					anchor={{ x: 1, y: 0 }}
-					text=""
-					style={{
+						anchor={{ x: 1, y: 0 }}
+						text=""
+						style={{
 						fontFamily: 'proxima-nova',
 						fontSize: REM * 1.5,
 						fontWeight: '600',
 						lineHeight: REM * 2,
-						fill: 0xffffff,
+						fill: 0xffffff
 					}}
 				/>
 			{/snippet}
 		</UI>
+
 		<Win />
 		<FreeSpinIntro />
 		{#if ['desktop', 'landscape'].includes(context.stateLayoutDerived.layoutType())}
@@ -96,8 +98,6 @@
 		{/if}
 		<FreeSpinOutro />
 		<Transition />
-
-		<!--<I18nTest />-->
 	{/if}
 </App>
 

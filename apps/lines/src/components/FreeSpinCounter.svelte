@@ -62,6 +62,7 @@
 	<FadeContainer {show} {...position} {scale}>
 		<Sprite key={panelKey} {...panelSizes} />
 		<Container
+			name="FreeSpinCounter"
 			x={panelSizes.width * 0.5}
 			y={panelSizes.height * 0.48}
 			pivot={anchorToPivot({

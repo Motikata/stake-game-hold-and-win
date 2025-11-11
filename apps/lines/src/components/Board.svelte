@@ -19,6 +19,7 @@
 	import BoardContainer from './BoardContainer.svelte';
 	import BoardMask from './BoardMask.svelte';
 	import BoardBase from './BoardBase.svelte';
+	import OverlaySymbols from "./OverlaySymbols.svelte";
 
 	const context = getContext();
 
@@ -66,7 +67,7 @@
 	context.stateGameDerived?.enhancedBoard?.readyToSpinEffect?.();
 </script>
 
-<Container>
+<Container name="Board">
 	{#if show}
 		<BoardContext animate={false}>
 			<BoardContainer>
@@ -78,6 +79,7 @@
 		<BoardContext animate={true}>
 			<BoardContainer>
 				<BoardBase />
+				<OverlaySymbols />
 			</BoardContainer>
 		</BoardContext>
 	{/if}
