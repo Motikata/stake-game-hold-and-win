@@ -90,8 +90,11 @@ export default {
 		src: new URL('../../assets/sprites/jackpotMeters/jackpotMeters.json', import.meta.url).href,
 	},
 
+    coin:  { type: 'spine', src: { atlas: new URL('../../assets/spines/coin/coin.atlas', import.meta.url).href, skeleton: new URL('../../assets/spines/coin/coin-pro.json',  import.meta.url).href, scale: 0.15 } },
 
-	// ======================================================================
+
+
+    // ======================================================================
 	// ======================================================================
 
 

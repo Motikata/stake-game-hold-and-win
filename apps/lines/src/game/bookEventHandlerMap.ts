@@ -199,7 +199,6 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 			paddingBoard,
 		});
 
-		// ---- DEV: след spin() (непипаме) ----------
 		try {
 			if (dev?.enabled) {
 				const mod = await import('./mockAfterSpin');
@@ -252,8 +251,7 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 			const cashCoordsFlat: CashCoord[] = cashCoordsByReel.flat();
 
 			// target: приблизително центъра по X и малко над борда по Y
-			const b = ctx.boardLayout();
-			const to = { x: 0, y: 0 };
+			const to = { x: 120, y: 0 };
 
 			// !!! ФИКС: Ключът трябва да е toGlobal, за да съвпадне с CollectEffectData !!!
 			SignalService.get().dispatch("fx:collectToSun", {
@@ -261,7 +259,7 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 				data: {
 					type: 'fx:collectToSun',
 					items: cashCoordsFlat,
-					toGlobal: to, // <--- ВЕЧЕ Е ПРАВИЛНО
+					toGlobal: to,
 				}
 			});
 

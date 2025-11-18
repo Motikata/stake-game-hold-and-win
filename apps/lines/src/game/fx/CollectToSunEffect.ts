@@ -1,57 +1,99 @@
-import {flyAmountGsap} from "./flyAmount";
-import type {Container, DisplayObject} from 'pixi.js';
-// !!! ДОБАВИМЕ ЛИПСВАЩИ ИМПОРТИ, АКО НЕ СА ГЛОБАЛНИ !!!
-import {Sprite as PixiSprite, Texture} from 'pixi.js';
+import {
+    Container,
+    Assets,
+    Sprite as PixiSprite,
+    Texture,
+    type DisplayObject,
+} from 'pixi.js';
 
-interface CollectEffectData {
-    items: { x: number, y: number }[];
-    toGlobal: { x: number, y: number };
+import {
+    flyAmountsGsapTimeline,
+    type FlyAmountOptions,
+} from './flyAmount';
+import { Spine } from "@esotericsoftware/spine-pixi-v8";
+
+import AssetsConfig from '../assets';
+
+export interface CollectEffectData {
+    items: { x: number; y: number }[];
+    toGlobal: { x: number; y: number };
 }
 
-// Твоят хелпър
-const makeCoin = (): DisplayObject => {
+const fallbackSprite = (): DisplayObject => {
     const s = new PixiSprite(Texture.from('pesudo_collection_above_reels.png'));
     s.anchor.set(0.5);
-    s.scale.set(0.10);
-    s.name = 'FlyingCoinSprite'; // Добавяме име за дебъг
+    s.scale.set(0.15);
     return s;
 };
 
+const makeCoin = (): DisplayObject => {
+    const coinCfg = AssetsConfig.coin;
+
+    const skeletonUrl = coinCfg.src.skeleton;
+    const atlasUrl = coinCfg.src.atlas;
+
+    // Проверка дали URL-ът съществува в кеша
+    if (!Assets.cache.has(skeletonUrl)) {
+        console.warn(`[FX] Cache miss for URL: ${skeletonUrl}`);
+        return fallbackSprite();
+    }
+
+    try {
+        // 3. СЪЗДАВАМЕ SPINE ЧРЕЗ URL-ИТЕ ОТ КОНФИГА
+        // Подаваме обект, за да сме сигурни, че ще върже правилния атлас с правилния скелет
+        const spine = Spine.from({
+            skeleton: skeletonUrl,
+            atlas: atlasUrl,
+        });
+
+        // Прилагаме мащаба директно от конфига
+        spine.scale.set(coinCfg.src.scale || 0.2);
+
+        // Защити
+        if (!spine || !spine.skeleton || !spine.skeleton.data) {
+            return fallbackSprite();
+        }
+
+        const animations = spine.skeleton.data.animations;
+        if (animations && animations.length > 0) {
+            spine.state.setAnimation(0, animations[0].name, true);
+        }
+
+        return spine as unknown as DisplayObject;
+
+    } catch (err) {
+        console.error('[FX] Spine create error', err);
+        return fallbackSprite();
+    }
+};
 
 export class CollectToSunEffect {
-    private overlayLayer: Container;
+    private boardContainer: Container;
+    private coinsContainer: Container;
     private data: CollectEffectData;
 
-    // Конструкторът е почистен
-    constructor(overlayLayer: Container, data: CollectEffectData) {
-        this.overlayLayer = overlayLayer;
+    constructor(boardContainer: Container, data: Container) {
+        this.boardContainer = boardContainer;
         this.data = data;
+
+        this.coinsContainer = new Container();
+        this.coinsContainer.position.set(0, 0);
+        this.boardContainer.addChild(this.coinsContainer);
     }
 
     public async play(): Promise<void> {
-        console.log(`[FX] Starting GSAP collect animation for ${this.data.items.length} items.`);
-        const promises: Promise<void>[] = [];
+        const itemsForTimeline: FlyAmountOptions[] = this.data.items.map((it) => ({
+            overlayLayer: this.coinsContainer,
+            fromGlobal: { x: it.x, y: it.y },
+            toGlobal: this.data.toGlobal,
+            makeVisual: makeCoin,
+            duration: 1.0,
+            curveHeight: 100,
+            ease: 'power2.out',
+        }));
 
-        // ... цикълът е същият
-        for (const it of this.data.items) {
-
-            const animationPromise = flyAmountGsap({
-                overlayLayer: this.overlayLayer,
-                fromGlobal: { x: it.x, y: it.y },
-                toGlobal: this.data.toGlobal,
-
-                // КЛЮЧОВАТА ПРОМЯНА: ИЗПОЛЗВАМЕ ТВОЯ ХЕЛПЪР
-                makeVisual: makeCoin,
-
-                duration: 0.8,
-                curveHeight: 100,
-                ease: 'power2.out',
-            });
-
-            promises.push(animationPromise);
-        }
-
-        await Promise.all(promises);
-        console.log(`[FX] GSAP collect animation finished.`);
+        await flyAmountsGsapTimeline(itemsForTimeline, {
+            staggerFraction: 0.15,
+        });
     }
 }

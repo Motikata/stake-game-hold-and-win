@@ -8,7 +8,7 @@
     // 1. Дефинираме променливата, която ще държи PIXI Container
     // (Не е необходимо да е реактивна, тъй като се сетва само веднъж)
     let stageContainer: Container | null = null;
-    let sunAbove: Container | null = null;
+    let board: Container | null = null;
 
     // 2. onFx: Функцията за обработка на сигнала (Остава същата)
     function onFx(e: SignalServiceEvent) {
@@ -19,13 +19,10 @@
         }
 
         console.log("FX Received. Container:", stageContainer);
-         sunAbove = findContainerByName(stageContainer, 'sunAbove')
-        console.log("sunAbove", sunAbove)
-        let animationData = e.data as CollectEffectData
-        animationData.toGlobal.x = sunAbove.x
-        animationData.toGlobal.y = sunAbove.y
+         board = findContainerByName(stageContainer, 'Board')
+        let animationData = e.data as CollectEffectData as Container
         // Извикваме ефекта с валидния контейнер
-        const effect = new CollectToSunEffect(stageContainer, animationData);
+        const effect = new CollectToSunEffect(board, animationData);
         effect.play();
     }
 

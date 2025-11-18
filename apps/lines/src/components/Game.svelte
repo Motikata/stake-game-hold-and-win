@@ -1,37 +1,41 @@
 <script lang="ts">
-	import { onMount, onDestroy, tick } from 'svelte';
+    import {onMount} from 'svelte';
 
-	import { EnableHotkey, getContextBoard } from 'components-shared';
-	import { MainContainer } from 'components-layout';
-	import { App, REM, Text, Container as SContainer } from 'pixi-svelte';
-	import { stateModal } from 'state-shared';
+    import {EnableHotkey} from 'components-shared';
+    import {MainContainer} from 'components-layout';
+    import {App, REM, Text} from 'pixi-svelte';
+    import {stateModal} from 'state-shared';
 
-	import { UI, UiGameName } from 'components-ui-pixi';
-	import { GameVersion, Modals } from 'components-ui-html';
+    import {UI, UiGameName} from 'components-ui-pixi';
+    import {GameVersion, Modals} from 'components-ui-html';
 
-	import { getContext } from '../game/context';
-	import { EnablePixiExtension } from 'components-pixi';
-	import EnableSound from './EnableSound.svelte';
-	import EnableGameActor from './EnableGameActor.svelte';
-	import ResumeBet from './ResumeBet.svelte';
-	import Sound from './Sound.svelte';
-	import Background from './Background.svelte';
-	import LoadingScreen from './LoadingScreen.svelte';
-	import BoardFrame from './BoardFrame.svelte';
-	import Board from './Board.svelte';
-	import Anticipations from './Anticipations.svelte';
-	import Win from './Win.svelte';
-	import FreeSpinIntro from './FreeSpinIntro.svelte';
-	import FreeSpinCounter from './FreeSpinCounter.svelte';
-	import FreeSpinOutro from './FreeSpinOutro.svelte';
-	import Transition from './Transition.svelte';
-	import ReelsHeader from './ReelsHeader.svelte';
-	import JackpotMeters from './JackpotMeters.svelte';
-	import { showCashDemo } from '../game/showCashDemo';
-	import OverlayLayer from "../game/fx/OverlayLayer.svelte";
+    import {getContext} from '../game/context';
+    import {EnablePixiExtension} from 'components-pixi';
+    import EnableSound from './EnableSound.svelte';
+    import EnableGameActor from './EnableGameActor.svelte';
+    import ResumeBet from './ResumeBet.svelte';
+    import Sound from './Sound.svelte';
+    import Background from './Background.svelte';
+    import LoadingScreen from './LoadingScreen.svelte';
+    import BoardFrame from './BoardFrame.svelte';
+    import Board from './Board.svelte';
+    import Anticipations from './Anticipations.svelte';
+    import Win from './Win.svelte';
+    import FreeSpinIntro from './FreeSpinIntro.svelte';
+    import FreeSpinCounter from './FreeSpinCounter.svelte';
+    import FreeSpinOutro from './FreeSpinOutro.svelte';
+    import Transition from './Transition.svelte';
+    import ReelsHeader from './ReelsHeader.svelte';
+    import JackpotMeters from './JackpotMeters.svelte';
+    import {showCashDemo} from '../game/showCashDemo';
+    import OverlayLayer from "../game/fx/OverlayLayer.svelte";
+    // 1. Импортваш Pixi класа с истинското му име
+    import { Assets } from 'pixi.js';
+    import AssetsConfig from "../game/assets";
 
 
-	const context = getContext();
+
+    const context = getContext();
 
 	onMount(() => (context.stateLayout.showLoadingScreen = true));
 
@@ -43,6 +47,8 @@
 
 	// достъпно в конзолата за тестове
 	(window as any).showCashDemo = showCashDemo;
+    (window as any).pixiAssets = Assets;
+    (window as any).pixiAssetsConfig = AssetsConfig;
 
 </script>
 
