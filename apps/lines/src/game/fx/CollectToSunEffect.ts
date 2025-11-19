@@ -4,6 +4,8 @@ import {
     Sprite as PixiSprite,
     Texture,
     type DisplayObject,
+    Point,
+    Graphics,
 } from 'pixi.js';
 
 import {
@@ -28,28 +30,23 @@ const fallbackSprite = (): DisplayObject => {
 
 const makeCoin = (): DisplayObject => {
     const coinCfg = AssetsConfig.coin;
+    if (!coinCfg) return fallbackSprite();
 
     const skeletonUrl = coinCfg.src.skeleton;
     const atlasUrl = coinCfg.src.atlas;
 
-    // Проверка дали URL-ът съществува в кеша
     if (!Assets.cache.has(skeletonUrl)) {
-        console.warn(`[FX] Cache miss for URL: ${skeletonUrl}`);
         return fallbackSprite();
     }
 
     try {
-        // 3. СЪЗДАВАМЕ SPINE ЧРЕЗ URL-ИТЕ ОТ КОНФИГА
-        // Подаваме обект, за да сме сигурни, че ще върже правилния атлас с правилния скелет
         const spine = Spine.from({
             skeleton: skeletonUrl,
             atlas: atlasUrl,
         });
 
-        // Прилагаме мащаба директно от конфига
         spine.scale.set(coinCfg.src.scale || 0.2);
 
-        // Защити
         if (!spine || !spine.skeleton || !spine.skeleton.data) {
             return fallbackSprite();
         }
@@ -72,28 +69,99 @@ export class CollectToSunEffect {
     private coinsContainer: Container;
     private data: CollectEffectData;
 
-    constructor(boardContainer: Container, data: Container) {
+    // Константите от Svelte файла
+    private readonly POSITION_ADJUSTMENT_X = 1;
+    private readonly POSITION_ADJUSTMENT_Y = 1.11;
+
+    constructor(boardContainer: Container, data: CollectEffectData) {
         this.boardContainer = boardContainer;
         this.data = data;
 
         this.coinsContainer = new Container();
-        this.coinsContainer.position.set(0, 0);
+
+        // --- ПОЗИЦИОНИРАНЕ СПРЯМО SVELTE ЛОГИКАТА ---
+        // Изчисляваме офсета, нужен за да постигнем * 1.11 ефекта.
+        // Тъй като coinsContainer е вътре в boardContainer, местим го локално.
+
+        const offsetX = this.boardContainer.position.x * (this.POSITION_ADJUSTMENT_X - 1);
+        const offsetY = this.boardContainer.position.y * (this.POSITION_ADJUSTMENT_Y - 1);
+
+        this.coinsContainer.position.set(offsetX, offsetY);
+        // ----------------------------------------------
+
+        // @ts-ignore
+        this.coinsContainer.label = "CoinsContainer";
         this.boardContainer.addChild(this.coinsContainer);
     }
 
     public async play(): Promise<void> {
-        const itemsForTimeline: FlyAmountOptions[] = this.data.items.map((it) => ({
-            overlayLayer: this.coinsContainer,
-            fromGlobal: { x: it.x, y: it.y },
-            toGlobal: this.data.toGlobal,
-            makeVisual: makeCoin,
-            duration: 1.0,
-            curveHeight: 100,
-            ease: 'power2.out',
-        }));
+        console.log(`%c[FX DEBUG] START COLLECT EFFECT`, 'background:#222;color:#bada55');
+
+        // 1. Смятаме ФИНАЛА (Слънцето) - Координатите са ГЛОБАЛНИ
+        const targetGlobal = new Point(this.data.toGlobal.x, this.data.toGlobal.y);
+
+        // 2. Преобразуваме крайната точка в локална за рисуване на Debug точката
+        const targetLocalForDebug = this.coinsContainer.toLocal(targetGlobal);
+
+        // --- DEBUG: Рисуваме ЗЕЛЕНА точка на финала ---
+        const debugEnd = new Graphics();
+        debugEnd.beginFill(0x00FF00);
+        debugEnd.drawCircle(0, 0, 15);
+        debugEnd.endFill();
+        debugEnd.position.set(targetLocalForDebug.x, targetLocalForDebug.y);
+        this.coinsContainer.addChild(debugEnd);
+        // ---------------------------------------------
+
+        const itemsForTimeline: FlyAmountOptions[] = this.data.items.map((it, index) => {
+
+            // 1. Взимаме данните от 'it', които са ЛОКАЛНИ за Борда
+            const symbolPosLocal = new Point(it.x, it.y);
+
+            // 2. ПРЕВРЪЩАНЕ: Локални (в Борда) -> Глобални (за Екрана)
+            // Използваме BoardContainer, за да трансформираме локалните в глобални
+            const symbolPosGlobal = this.boardContainer.toGlobal(symbolPosLocal);
+
+            // 3. Преобразуваме началната точка в локална за рисуване на Debug точката
+            const startLocalForDebug = this.coinsContainer.toLocal(symbolPosGlobal);
+
+
+            // --- DEBUG: Рисуваме ЧЕРВЕНА точка на старта ---
+            const debugStart = new Graphics();
+            debugStart.beginFill(0xFF0000);
+            debugStart.drawCircle(0, 0, 10);
+            debugStart.endFill();
+            debugStart.position.set(startLocalForDebug.x, startLocalForDebug.y);
+            this.coinsContainer.addChild(debugStart);
+            // -----------------------------------------------
+
+            // --- ЛОГВАМЕ ТРИТЕ КООРДИНАТИ ---
+            console.log(`%cItem ${index}:`, 'color: #ffd700');
+            console.log(`  - Local in Board (Input): [${symbolPosLocal.x | 0}, ${symbolPosLocal.y | 0}]`);
+            console.log(`  - Global on Screen: [${symbolPosGlobal.x | 0}, ${symbolPosGlobal.y | 0}]`);
+            console.log(`  - Local in CoinsContainer (Tween Start): [${startLocalForDebug.x | 0}, ${startLocalForDebug.y | 0}]`);
+            // ---------------------------------
+
+
+            return {
+                overlayLayer: this.coinsContainer,
+
+                // Подаваме ГЛОБАЛНИТЕ координати на хелпъра
+                fromGlobal: { x: symbolPosGlobal.x, y: symbolPosGlobal.y },
+                toGlobal:   this.data.toGlobal, // Слънцето е ГЛОБАЛНО
+
+                makeVisual: makeCoin,
+
+                duration: 1.0,
+                curveHeight: 100,
+                ease: 'power2.out',
+            };
+        });
 
         await flyAmountsGsapTimeline(itemsForTimeline, {
             staggerFraction: 0.15,
         });
+
+        // 4. ПОЧИСТВАНЕ
+        this.coinsContainer.destroy({ children: true });
     }
 }

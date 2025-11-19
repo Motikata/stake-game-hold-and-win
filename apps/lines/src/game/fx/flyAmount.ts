@@ -8,17 +8,18 @@ gsap.registerPlugin(PixiPlugin, MotionPathPlugin);
 export type CoordLike = { x: number; y: number };
 
 export interface FlyAmountOptions {
-    overlayLayer: Container;            // слой върху сцената (в app.stage над HUD/борд)
-    fromGlobal: CoordLike;              // старт (логически „глобални“ координати)
-    toGlobal:   CoordLike;              // край  (логически „глобални“ координати)
-    makeVisual: () => DisplayObject;    // създава визуал (Sprite/Container/Text)
-    duration?: number;                  // продължителност (s)
-    curveHeight?: number;               // височина на арката
-    ease?: string;                      // ease (напр. power2.inOut)
+    overlayLayer: Container;
+    fromGlobal: CoordLike;
+    toGlobal:   CoordLike;
+    makeVisual: () => DisplayObject;
+    duration?: number;
+    curveHeight?: number;
+    ease?: string;
 }
 
 /**
- * ЕДИНИЧЕН полет – ако ти трябва да пускаш по един обект.
+ * ЕДИНИЧЕН полет
+ * Взима ГЛОБАЛНИ координати и ги преобразува в ЛОКАЛНИ спрямо overlayLayer.
  */
 export function flyAmountGsap({
                                   overlayLayer,
@@ -30,21 +31,11 @@ export function flyAmountGsap({
                                   ease = 'power2.out',
                               }: FlyAmountOptions): Promise<void> {
     return new Promise<void>((resolve) => {
-        const isFromValid =
-            fromGlobal && typeof fromGlobal.x === 'number' && typeof fromGlobal.y === 'number';
-        const isToValid =
-            toGlobal && typeof toGlobal.x === 'number' && typeof toGlobal.y === 'number';
+        const isFromValid = fromGlobal && typeof fromGlobal.x === 'number' && typeof fromGlobal.y === 'number';
+        const isToValid = toGlobal && typeof toGlobal.x === 'number' && typeof toGlobal.y === 'number';
 
         if (!isFromValid || !isToValid) {
-            console.error(
-                'FlyAmountGsap ERROR: Invalid global coordinates received. Aborting tween.',
-                {
-                    fromGlobal,
-                    isFromValid,
-                    toGlobal,
-                    isToValid,
-                },
-            );
+            console.error('FlyAmountGsap ERROR: Invalid global coordinates.', { fromGlobal, toGlobal });
             return resolve();
         }
 
@@ -52,8 +43,13 @@ export function flyAmountGsap({
         overlayLayer.addChild(ghost);
         ghost.alpha = 1.0;
 
-        const fromLocal = new Point(fromGlobal.x, fromGlobal.y);
-        const toLocal   = new Point(toGlobal.x,   toGlobal.y);
+        // --- ВАЖНО: Преобразуваме Глобални -> Локални (спрямо слоя) ---
+        const globalStart = new Point(fromGlobal.x, fromGlobal.y);
+        const globalEnd   = new Point(toGlobal.x, toGlobal.y);
+
+        const fromLocal = overlayLayer.toLocal(globalStart);
+        const toLocal   = overlayLayer.toLocal(globalEnd);
+        // -------------------------------------------------------------
 
         ghost.position.copyFrom(fromLocal);
 
@@ -71,7 +67,7 @@ export function flyAmountGsap({
                 ],
                 autoRotate: false,
             },
-            alpha: 0.3,
+            alpha: 0, // Изчезва напълно в края
             onComplete: () => {
                 ghost.destroy({ children: true });
                 resolve();
@@ -81,26 +77,19 @@ export function flyAmountGsap({
 }
 
 /**
- * МНОГО полети в GSAP timeline:
- * staggerFraction = 0.2 означава:
- * – 2-рият тръгва, когато 1-вият е минал 20% от своята продължителност
- * – 3-тият тръгва, когато 2-рият е минал 20%, и т.н.
+ * МНОГО полети (Timeline)
  */
 export function flyAmountsGsapTimeline(
     items: FlyAmountOptions[],
     {
-        staggerFraction = 0.2, // 0 = всички наведнъж, 1 = без застъпване, 0.2 = 20% прогрес преди следващия
+        staggerFraction = 0.2,
     }: { staggerFraction?: number } = {},
 ): Promise<void> {
     return new Promise<void>((resolve) => {
-        if (!items.length) {
-            return resolve();
-        }
+        if (!items.length) return resolve();
 
         const tl = gsap.timeline({
-            onComplete: () => {
-                resolve();
-            },
+            onComplete: () => resolve(),
         });
 
         let hasTweens = false;
@@ -118,31 +107,22 @@ export function flyAmountsGsapTimeline(
                 ease = 'power2.out',
             } = opts;
 
-            const isFromValid =
-                fromGlobal && typeof fromGlobal.x === 'number' && typeof fromGlobal.y === 'number';
-            const isToValid =
-                toGlobal && typeof toGlobal.x === 'number' && typeof toGlobal.y === 'number';
-
-            if (!isFromValid || !isToValid) {
-                console.error(
-                    'flyAmountsGsapTimeline ERROR: Invalid global coordinates for item. Skipping tween.',
-                    {
-                        index,
-                        fromGlobal,
-                        isFromValid,
-                        toGlobal,
-                        isToValid,
-                    },
-                );
-                return;
-            }
+            // Валидация
+            const isFromValid = fromGlobal && typeof fromGlobal.x === 'number';
+            const isToValid = toGlobal && typeof toGlobal.x === 'number';
+            if (!isFromValid || !isToValid) return;
 
             const ghost = makeVisual();
             overlayLayer.addChild(ghost);
             ghost.alpha = 1.0;
 
-            const fromLocal = new Point(fromGlobal.x, fromGlobal.y);
-            const toLocal   = new Point(toGlobal.x,   toGlobal.y);
+            // --- ВАЖНО: Преобразуваме Глобални -> Локални тук също ---
+            const globalStart = new Point(fromGlobal.x, fromGlobal.y);
+            const globalEnd   = new Point(toGlobal.x, toGlobal.y);
+
+            const fromLocal = overlayLayer.toLocal(globalStart);
+            const toLocal   = overlayLayer.toLocal(globalEnd);
+            // -------------------------------------------------------
 
             ghost.position.copyFrom(fromLocal);
 
@@ -170,7 +150,7 @@ export function flyAmountsGsapTimeline(
                         ],
                         autoRotate: false,
                     },
-                    alpha: 0.3,
+                    alpha: 0,
                     onComplete: () => {
                         ghost.destroy({ children: true });
                     },
@@ -181,8 +161,6 @@ export function flyAmountsGsapTimeline(
             previousDuration = duration;
         });
 
-        if (!hasTweens) {
-            resolve();
-        }
+        if (!hasTweens) resolve();
     });
 }

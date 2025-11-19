@@ -1,32 +1,48 @@
 <script lang="ts">
-    import { onMount, onDestroy } from 'svelte'; // onMount/onDestroy са чистият път за еднократно абониране
+    import { onMount, onDestroy } from 'svelte';
     import {Container, getContextApp, Sprite} from "pixi-svelte";
     import { SignalService, type SignalServiceEvent } from "../../signals/SignalService";
     import { CollectToSunEffect, type CollectEffectData } from "./CollectToSunEffect";
-    import {findContainerByName} from "../utils";
+    import {getContainers} from "../utils";
 
-    // 1. Дефинираме променливата, която ще държи PIXI Container
-    // (Не е необходимо да е реактивна, тъй като се сетва само веднъж)
     let stageContainer: Container | null = null;
-    let board: Container | null = null;
 
-    // 2. onFx: Функцията за обработка на сигнала (Остава същата)
     function onFx(e: SignalServiceEvent) {
-        // !!! КЛЮЧ: Защита срещу ранно извикване (ако сигналът дойде преди onMount)
         if (!stageContainer) {
             console.warn("FX Ignored: Overlay Container is not initialized yet.");
             return;
         }
 
-        console.log("FX Received. Container:", stageContainer);
-         board = findContainerByName(stageContainer, 'Board')
-        let animationData = e.data as CollectEffectData as Container
-        // Извикваме ефекта с валидния контейнер
-        const effect = new CollectToSunEffect(board, animationData);
+        // 1. Взимаме контейнерите
+        const { Board, sunAbove } = getContainers(
+            stageContainer,
+            'Board',
+            'sunAbove',
+        );
+
+        console.log("FX Received. Containers:", { Board, sunAbove });
+
+        // 2. ВАЖНО: Проверка дали сме ги намерили
+        if (!Board || !sunAbove) {
+            console.error("CRITICAL: Board or sunAbove not found in stage!");
+            return;
+        }
+
+        // 3. Оправяме типа на данните (махни 'as Container')
+        const animationData = e.data as CollectEffectData;
+
+        // 4. Взимаме ГЛОБАЛНИТЕ координати на слънцето
+        // Това връща Point { x: 123, y: 456 }
+        const sunGlobalPos = sunAbove.getGlobalPosition();
+
+        // 5. Присвояваме координатите, а не целия обект
+        animationData.toGlobal = sunGlobalPos;
+
+        // 6. Стартираме ефекта
+        const effect = new CollectToSunEffect(Board, animationData);
         effect.play();
     }
 
-    // 3. onMount: Използваме го за сигурна инициализация и абониране
     onMount(() => {
         const app = getContextApp().stateApp.pixiApplication;
         stageContainer = app?.stage ?? null;
@@ -40,13 +56,9 @@
         }
     });
 
-    // 4. onDestroy: Почистваме слушателя
     onDestroy(() => {
-        // Премахваме слушателя, ако е бил добавен
-        if (stageContainer) { // Проверяваме дали е бил инициализиран, за да чистим
+        if (stageContainer) {
             SignalService.get().remove("fx:collectToSun", onFx);
         }
     });
-
-    // 5. ПРЕМАХВАМЕ НЕКОРЕКТНИЯ $effect и излишния onMount/tick
 </script>

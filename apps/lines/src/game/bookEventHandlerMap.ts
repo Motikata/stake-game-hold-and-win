@@ -5,7 +5,7 @@ import {stateBet, stateUi} from 'state-shared';
 import {sequence} from 'utils-shared/sequence';
 
 import {eventEmitter} from './eventEmitter';
-import {findContainerByName, getSymbolX, getSymbolY, playBookEvent} from './utils';
+import {getSymbolX, getSymbolY, playBookEvent} from './utils';
 import {type WinLevel, type WinLevelData, winLevelMap} from './winLevelMap';
 import {stateGame, stateGameDerived} from './stateGame.svelte';
 import type {BookEvent, BookEventContext, BookEventOfType} from './typesBookEvent';
@@ -13,7 +13,6 @@ import type {Position} from './types';
 import config from './config';
 import type {CashCoord, CashCoords} from './types/CashCoord';
 import {SignalService} from "../signals/SignalService";
-import {getContextApp} from "../../../../packages/pixi-svelte";
 
 const winLevelSoundsPlay = ({ winLevelData }: { winLevelData: WinLevelData }) => {
 	console.log('[BOOK] 🔊 play winLevelSounds', winLevelData);
@@ -249,11 +248,7 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 		const hasAnyCash = cashCoordsByReel.some((arr) => arr.length > 0);
 		if (hasAnyCash) {
 			const cashCoordsFlat: CashCoord[] = cashCoordsByReel.flat();
-
-			// target: приблизително центъра по X и малко над борда по Y
-			const to = { x: 120, y: 0 };
-
-			// !!! ФИКС: Ключът трябва да е toGlobal, за да съвпадне с CollectEffectData !!!
+			const to = { x: 0, y: 0 };
 			SignalService.get().dispatch("fx:collectToSun", {
 				target: this,
 				data: {

@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="218ea86c-d6fa-46f3-adef-f22adb2ad16f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/spineCreate.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin-pma.atlas" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin-pma.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin-pro.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin-pro.skel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin.atlas" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/spines/coin/coin.png" afterDir="false" />
+    <list default="true" id="218ea86c-d6fa-46f3-adef-f22adb2ad16f" name="Changes" comment="add spine 4.2&#10;add coin animation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Game.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/assets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/assets.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/bookEventHandlerMap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/fx/CollectToSunEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/fx/CollectToSunEffect.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/fx/OverlayLayer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/fx/OverlayLayer.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/fx/flyAmount.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/fx/flyAmount.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JavaScript Debug.?sessionID=6409d398-6618-4b10-9e9d-579d87358533&rgs_url=rgs.stake-engine.com&lang=en&currency=EUR&device=desktop&social=false&demo=true&.executor": "Run",
-    "JavaScript Debug.?sessionID=86704ffc-ff61-45aa-90c5-466e64f06ef7&rgs_url=rgs.stake-engine.com&lang=en&currency=EUR&device=desktop&social=false&demo=true&mock=1&mockSymbol=CASH&mockPos=0:1,1:2,2:1&mockAmount=750.executor": "Debug",
+    "JavaScript Debug.?sessionID=86704ffc-ff61-45aa-90c5-466e64f06ef7&rgs_url=rgs.stake-engine.com&lang=en&currency=EUR&device=desktop&social=false&demo=true&mock=1&mockSymbol=CASH&mockPos=0:1,1:2,2:1&mockAmount=750.executor": "Run",
     "JavaScript Debug.debug.executor": "Debug",
     "JavaScript Debug.localhost:3001.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -200,11 +188,24 @@
       <workItem from="1762764745827" duration="7096000" />
       <workItem from="1763414783339" duration="1224000" />
       <workItem from="1763416293277" duration="229000" />
-      <workItem from="1763453174318" duration="11100000" />
+      <workItem from="1763453174318" duration="32176000" />
     </task>
+    <task id="LOCAL-00001" summary="add spine 4.2&#10;add coin animation">
+      <option name="closed" value="true" />
+      <created>1763469580272</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763469580272</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add spine 4.2&#10;add coin animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add spine 4.2&#10;add coin animation" />
   </component>
 </project>

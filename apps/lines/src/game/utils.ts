@@ -204,23 +204,59 @@ export const getSymbolInfo = ({
  * Връща първия намерен Container.
  *
  * @param root - Началният DisplayObject (напр. app.stage).
- * @param name - Името на търсения контейнер.
+ * @param names
  * @returns Намереният Container или null.
  */
-export function findContainerByName(
+export function getContainers(
     root: DisplayObject,
-    name: string
-): Container | null {
-    // Използваме getNamedChildrenRecursive, за да съберем всички именувани обекти
+    ...names: string[] // <--- Приема списък от имена: 'A', 'B', 'C'
+): Record<string, Container> {
+
+    const result: Record<string, Container> = {};
     const allNamedObjects = getNamedChildrenRecursive(root);
 
-    // Филтрираме и връщаме първия, който отговаря на името и „прилича“ на Container
-    const found = allNamedObjects.find(
-        (item) =>
-            item.name === name &&
-            'children' in (item.object as any) &&
-            Array.isArray((item.object as any).children)
-    );
+    // Минаваме през всичко намерено
+    allNamedObjects.forEach((item) => {
+        // Ако името е в нашия списък за търсене И е контейнер
+        if (
+            item.name &&
+            names.includes(item.name) &&
+            item.object
+        ) {
+            // Запазваме го в обекта с ключ = името му
+            result[item.name] = item.object;
+        }
+    });
 
-    return found ? (found.object as Container) : null;
+    return result;
+}
+
+/**
+ * Намира CoinsContainer и задава неговата X позиция.
+ *
+ * @param root - Главният DisplayObject за търсене.
+ * @param x - Новата X координата (относителна спрямо родителя на CoinsContainer).
+ */
+export function setCoinsX(root: DisplayObject, x: number): void {
+    const { CoinsContainer } = getContainers(root, 'CoinsContainer');
+    if (CoinsContainer) {
+        CoinsContainer.x = x;
+    } else {
+        console.warn("[setCoinsX] CoinsContainer не е намерен.");
+    }
+}
+
+/**
+ * Намира CoinsContainer и задава неговата Y позиция.
+ *
+ * @param root - Главният DisplayObject за търсене.
+ * @param y - Новата Y координата (относителна спрямо родителя на CoinsContainer).
+ */
+export function setCoinsY(root: DisplayObject, y: number): void {
+    const { CoinsContainer } = getContainers(root, 'CoinsContainer');
+    if (CoinsContainer) {
+        CoinsContainer.y = y;
+    } else {
+        console.warn("[setCoinsY] CoinsContainer не е намерен.");
+    }
 }
